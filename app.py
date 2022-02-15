@@ -14,7 +14,7 @@ def get_countries_by_region(region):
     for country in countries:
         country = {'region': region, 
                     'country': country['name']['official'], 
-                    'languaje': country['languages']}
+                    'languaje': list(country['languages'].values())[0]}
         final_countries.append(country)
 
     
