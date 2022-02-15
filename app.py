@@ -1,5 +1,5 @@
 """
-De https://restcountries.com/ obtenga el nombre del idioma que habla el pais y encriptelo con SHA1
+OK ::: De https://restcountries.com/ obtenga el nombre del idioma que habla el pais y encriptelo con SHA1
 En la columna Time ponga el tiempo que tardo en armar la fila (debe ser automatico)
 La tabla debe ser creada en un DataFrame con la libreria PANDAS
 Con funciones de la libreria pandas muestre el tiempo total, el tiempo promedio, el tiempo minimo y el maximo que tardo en procesar toda las filas de la tabla.
@@ -12,6 +12,7 @@ La prueba debe ser entregada en un repositorio git.
 from turtle import pd
 import pandas as pd
 import requests
+import timeit
 from hashlib import sha1
 
 
@@ -24,13 +25,21 @@ def get_countries_by_region(region):
     final_countries = []
 
     for country in countries:
+        start = timeit.timeit()
+        encode_text= encode_language(list(country['languages'].values())[0])
+        country_text = country['name']['official']
+        end = timeit.timeit()
+        total = (end-start)*1000
+        
         country = {'region': region, 
-                    'country': country['name']['official'], 
-                    'languaje': encode_language(list(country['languages'].values())[0])}
+                    'country': country_text, 
+                    'languaje':encode_text,
+                    'time': total }
+
         final_countries.append(country)
 
     return final_countries
-    
+
 def encode_language(language):
     return sha1(language.encode('utf-8')).hexdigest()
     
