@@ -1,19 +1,18 @@
 """
 OK ::: De https://restcountries.com/ obtenga el nombre del idioma que habla el pais y encriptelo con SHA1
 OK ::: En la columna Time ponga el tiempo que tardo en armar la fila (debe ser automatico)
-La tabla debe ser creada en un DataFrame con la libreria PANDAS
-Con funciones de la libreria pandas muestre el tiempo total, el tiempo promedio, el tiempo minimo y el maximo que tardo en procesar toda las filas de la tabla.
+OK ::: La tabla debe ser creada en un DataFrame con la libreria PANDAS
+OK ::: Con funciones de la libreria pandas muestre el tiempo total, el tiempo promedio, el tiempo minimo y el maximo que tardo en procesar toda las filas de la tabla.
 Guarde el resultado en sqlite.
 Genere un Json de la tabla creada y guardelo como data.json
 La prueba debe ser entregada en un repositorio git.
 """
 
-
-from turtle import pd
 import pandas as pd
 import requests
 import timeit
 from hashlib import sha1
+import json
 
 
 def get_regions():
@@ -67,6 +66,11 @@ def create_df_and_calc(result):
 
     return total, mean, min, max
 
+
+def table_to_json(result):
+    with open('data.json', 'w') as file:
+        json.dump(result, file)
+
     
 
 #regions = get_regions()
@@ -78,3 +82,5 @@ def create_df_and_calc(result):
 
 
 print(create_df_and_calc(get_all_countries()))
+
+table_to_json(get_all_countries())
