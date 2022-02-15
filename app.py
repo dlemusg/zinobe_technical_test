@@ -56,9 +56,17 @@ def encode_language(language):
     return sha1(language.encode('utf-8')).hexdigest()
 
 
-def create_df():
-    return 0
-    
+def create_df_and_calc(result):
+    df = pd.DataFrame(result)
+
+    total = df["time"].sum()
+    mean = df["time"].mean()
+    min = df["time"].min()
+    max = df["time"].max()
+
+
+    return total, mean, min, max
+
     
 
 #regions = get_regions()
@@ -69,4 +77,4 @@ def create_df():
     #print(get_countries_by_region(region))
 
 
-get_all_countries()
+print(create_df_and_calc(get_all_countries()))
