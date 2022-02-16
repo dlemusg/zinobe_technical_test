@@ -9,11 +9,32 @@ La prueba debe ser entregada en un repositorio git.
 """
 
 from core_app import get_coutries_by_region, get_all_countries, create_df_and_calc, table_to_json
+from database import insert_row, sql_fetch
 
 
 if __name__ == "__main__":
 
-    print(create_df_and_calc(get_all_countries()))
+    print("1. Obteniendo data de los paises")
+    result = get_all_countries()
+    print("2. Calculando total, median, min, max a partir del df")
+    total, median, min, max = create_df_and_calc(result)
+    print(total)
+    print(median)
+    print(min)
+    print(max)
+
+
+    print("3. Insert datos sobre la bd")
+    insert_row(result)
+
+    print("4. Generando data.json ")
+    table_to_json(result)
+
+    
+
+
+
+    
 
 
 # regions = get_regions()

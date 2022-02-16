@@ -5,8 +5,6 @@ from hashlib import sha1
 import json
 
 
-
-
 def get_coutries_by_region(regions):
 
     final_countries = []
