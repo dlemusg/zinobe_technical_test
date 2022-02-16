@@ -108,6 +108,7 @@ def create_df_and_calc(result):
         de todos los registros utilizando funciones de la libreria pandas 
 
         Parameters
+        ---------
         result: Lista de diccionario con los registros para el df
 
         Returns
