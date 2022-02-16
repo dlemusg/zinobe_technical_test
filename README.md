@@ -28,6 +28,9 @@ Desarrolle una aplicacion en python que genere la tabla anterior teniendo las si
 
 ## Diseño de la solución
 
+### Propuesta de implementación
+![Image_text](https://github.com/dlemusg/zinobe_technical_test/blob/main/class_zinobe.jpeg)
+
 ### Pre-requisitos 📋
 Para el correcto funcionamiento del proyecto se deben instalar las siguientes librerias como prerequisitos
 ```
