@@ -29,7 +29,7 @@ Desarrolle una aplicacion en python que genere la tabla anterior teniendo las si
 ## Diseño de la solución
 
 ### Propuesta de implementación
-![Image_text](https://github.com/dlemusg/zinobe_technical_test/blob/main/class_zinobe.jpeg)
+![Image_text](https://github.com/dlemusg/zinobe_technical_test/blob/main/images/class_zinobe.jpeg)
 
 ### Pre-requisitos 📋
 Para el correcto funcionamiento del proyecto se deben instalar las siguientes librerias como prerequisitos
@@ -42,6 +42,8 @@ Para la ejecución de las pruebas dentro de la carpeta del proyecto ejecutar el 
 ```
 python -m unittest test_base.py
 ```
+#### Resultado esperado
+![Image_text](https://github.com/dlemusg/zinobe_technical_test/blob/main/images/out_test_base.jpg)
 
 
 ### Ejecución 📦
@@ -49,6 +51,8 @@ Para la ejecución del programa, dentro de la carpeta del proyecto ejecutar el s
 ```
 python app.py
 ```
+#### Resultado esperado
+![Image_text](https://github.com/dlemusg/zinobe_technical_test/blob/main/images/out_app.jpg)
 
 ### Construido con 🛠️
 * **Pandas:** Libreria utilizada para la creación del dataframe y el calculo del total, media, min y max
