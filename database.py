@@ -2,9 +2,10 @@ import sqlite3
 from sqlite3 import Error
 
 
+
 def sql_connection():
     try:
-        con = sqlite3.connect(':memory:')
+        con = sqlite3.connect('database.db')
         print("Connection is established: Database is created in memory")
     except Error:
         print(Error)
@@ -18,34 +19,33 @@ def create_core_table(con):
         cursorObj.execute("CREATE TABLE core(region text, country text PRIMARY KEY, language text, time real)")
         con.commit()
     except Error:
-        print(Error)
+        return Error
     
 
 
 def insert_row(entities):
     cursorObj = con.cursor()
-
-    for entity in entities:
-
-        try:
+    try:
+        for entity in entities:
             region = entity['region']
             country = entity['country']
             language = entity['language']
             time = entity['time']
             cursorObj.execute('INSERT INTO core(region, country, language, time) VALUES(?, ?, ?, ?)', (region, country, language, time))
             con.commit()
-        except Error:
-            print(Error)
+    except Error:
+        return Error
     
 
-def sql_fetch(con):
-
+def sql_fetch():
     cursorObj = con.cursor()
-    cursorObj.execute('SELECT * FROM core')
-    rows = cursorObj.fetchall()
-    for row in rows:
-        print(row)
-
+    try:
+        cursorObj.execute('SELECT * FROM core Limit 5')
+        rows = cursorObj.fetchall()
+        #for row in rows:
+        return rows
+    except Error:
+        return Error
 
 
 

@@ -90,7 +90,14 @@ def encode_language(language):
         Text
             Cadena encriptada
     """
-    return sha1(language.encode('utf-8')).hexdigest()
+
+    try:
+        return sha1(language.encode('utf-8')).hexdigest()
+
+    except:
+        return 'Error'
+
+    
 
 
 def create_df_and_calc(result):
@@ -111,15 +118,18 @@ def create_df_and_calc(result):
             min: Valor más pequeño de todos los tiempos
             max: Valor más grande de todos los tiempos
     """
+    try:
+        df = pd.DataFrame(result)
 
-    df = pd.DataFrame(result)
+        total = df["time"].sum()
+        mean = df["time"].mean()
+        min = df["time"].min()
+        max = df["time"].max()
 
-    total = df["time"].sum()
-    mean = df["time"].mean()
-    min = df["time"].min()
-    max = df["time"].max()
+        return total, mean, min, max
 
-    return total, mean, min, max
+    except:
+        return 'Error'
 
 
 def table_to_json(result):
@@ -136,5 +146,9 @@ def table_to_json(result):
         -------
 
     """
-    with open('data.json', 'w') as file:
-        json.dump(result, file)
+    try:
+        with open('data.json', 'w') as file:
+            json.dump(result, file)
+
+    except:
+        return 'Error'
